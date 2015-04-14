@@ -1,5 +1,5 @@
 # EML_address_extractor
-Extracts email addresses .eml files in a directory. Outputs a CSV file
+Extracts email addresses from .eml files in a directory. Outputs a CSV file
 
 Program finds emails in directory beside it called "emails".
 This means if directory of program.py is ~/program.py, .eml 
