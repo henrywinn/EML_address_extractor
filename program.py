@@ -5,6 +5,7 @@ import re, sys
 
 ignore_to = raw_input('If you would like to filter out emails sent to you, enter your email\n')
 output_name = raw_input('Enter the name of the file you would like to output (.csv extension added automatically)\n')
+directory = raw_input('Enter the directory where the .eml files are\n')
 
 dictionary = {}
 parser = Parser()
@@ -24,7 +25,7 @@ def get_addresses(string):
     else:
         return False
 
-for (dirpath, dirnames, filenames) in walk('emails'):
+for (dirpath, dirnames, filenames) in walk(directory):
     for filename in filenames:
         if filename[-3:] == 'eml':
             f = open(dirpath+'/'+filename, 'r')
@@ -41,5 +42,8 @@ for (dirpath, dirnames, filenames) in walk('emails'):
                             sys.stdout.write("\r%s files read" % file_count)
             f.close()
 
-sys.stdout.write("\r%s files scanned\n" % file_count)
-sys.stdout.write("%s emails added to csv\n" % address_count)
+if file_count == 0:
+    print 'No files were scanned. Perhaps you entered the directory name incorrectly?'
+else:
+    sys.stdout.write("\r%s files scanned\n" % file_count)
+    sys.stdout.write("%s emails added to csv\n" % address_count)
