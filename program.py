@@ -3,11 +3,12 @@ from email.message import Message
 from os import walk
 import re, sys
 
-ignore_to = raw_input('If you would like to filter out emails sent to you, enter your email: ')
+ignore_to = raw_input('If you would like to filter out emails sent to you, enter your email\n')
+output_name = raw_input('Enter the name of the file you would like to output (.csv extension added automatically)\n')
 
 dictionary = {}
 parser = Parser()
-return_file = open('emails.csv', 'w')
+return_file = open(output_name+'.csv', 'w')
 address_count = 0
 file_count = 0
 
